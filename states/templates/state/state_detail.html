@@ -1,0 +1,31 @@
+{% extends 'state/base.html' %}
+<!-- {% load static %} -->
+{% block content %}
+    <div class="state">
+        <h2 style="margin-bottom:30px;margin-left:5%;">{{ states.name }}</h2>
+        <div class="container-fluid">
+            <div class="row" >
+                <div class="col-md-6">
+                        <img src="{{states.Photo}}" class="Snapshot" style="margin-left:15%;height:130px;width:300px;"></img>
+                </div>
+                <div class="col-md-6" class="details" style="border-radius:5px;border-width:0.5px;border-style:solid;border-color:black;">
+                        <h4>API&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: {{states.API}}</h4>
+                        <h4>Iron Content &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;: {{states.WaterPh}}</h4>
+                        <h4>Literacy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;: {{states.HDI}}</h4>
+                        <h4>Per Capita Income&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;: {{states.PerCapitaIncome}}</h4>
+                </div><br><br><br>
+                <a href="http://127.0.0.1:8000/graphs" style="margin-left:8%; "><button class="btn btn-danger">Graphics</button></a>
+            </div>
+            <div id='map' style='width: 400px; height: 300px; margin-left:35%;margin-top:8%;margin-bottom:50%;'></div>
+                <script>
+                mapboxgl.accessToken = 'pk.eyJ1IjoidWpqd2FsLTI2IiwiYSI6ImNqcndpY3ZvMTBkNGU0YXBnOG8wMWFsZXoifQ.GKHeBfEHwR5MSN0UCxTAHg';
+                var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/dark-v9',
+                center:[{{states.longitude}},{{states.latitude}}],
+                zoom:6,
+                });
+                </script><br>
+           
+            </div>
+{% endblock %}

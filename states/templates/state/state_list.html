@@ -1,0 +1,15 @@
+{% extends 'state/base.html' %}
+{% load static %}
+{% block content %}
+                    <div class="content container list" >
+                            <div class="row">
+                                <div class="col-md-8">    
+                    {% for state in states %}
+                    <a style="text-decoration: none;" href="{% url 'state_detail' pk=state.pk %}">    <div class="bton">
+                                <p>{{ state.name }}</p>
+                        </div></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endblock %}
